@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QThread>
 
+bool RF24Interface::m_RF24InterfaceInitialized = false;
+
 RF24Interface::RF24Interface(QObject *parent) : QObject(parent)
 
 {
@@ -22,6 +24,9 @@ void RF24Interface::init()
 {
     qDebug() << "RF24Interface init()" << QThread::currentThreadId();
 
+    if(RF24Interface::m_RF24InterfaceInitialized)
+        return;
+
     thread = new QThread();
     thread->setObjectName("RF24Interface");
 
@@ -35,6 +40,8 @@ void RF24Interface::init()
     connect(thread, &QThread::finished, thread, &QObject::deleteLater);
 
     thread->start();
+
+    RF24Interface::m_RF24InterfaceInitialized = true;
 }
 
 void RF24Interface::finished()

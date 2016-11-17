@@ -29,6 +29,8 @@ private slots:
 private:
     QThread *thread;
     RF24Functions *task;
+
+    static bool m_RF24InterfaceInitialized;
 };
 
 #endif // RF24INTERFACE_H
