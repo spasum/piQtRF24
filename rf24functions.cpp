@@ -97,7 +97,7 @@ void RF24Functions::loop()
         // DHCP service runs on the master node and assign addresses to the unit nodes
         RF24Functions::m_mesh.DHCP();
 #else
-        qDebug() << "RF24Functions::loop: " << ++counter;
+        qDebug() << "RF24Functions::loop()";
 #endif
         usleep(250000); //250ms
     }
