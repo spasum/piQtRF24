@@ -16,8 +16,11 @@ class RF24Functions : public QObject
 protected:
     explicit RF24Functions(QObject *parent = 0);
     virtual ~RF24Functions();
+    Q_DISABLE_COPY(RF24Functions)
 
     static void interruptHandler();
+
+    friend class RF24Interface;
 
 protected slots:
     void loop();
@@ -28,14 +31,11 @@ signals:
 
 private:
     bool m_stop;
-    static quint64 m_counter;
-
-    friend class RF24Interface;
 
 #ifdef __RPI__
-    RF24 m_radio;
-    RF24Network m_network;
-    RF24Mesh m_mesh;
+    static RF24 m_radio;
+    static RF24Network m_network;
+    static RF24Mesh m_mesh;
 
     // RF payload transmition:
     struct t_payload

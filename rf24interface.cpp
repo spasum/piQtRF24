@@ -22,7 +22,8 @@ RF24Interface::~RF24Interface()
 
 void RF24Interface::init()
 {
-    qDebug() << "RF24Interface init()" << QThread::currentThreadId();
+    qDebug() << "RF24Interface init()" << QThread::currentThreadId()
+             << RF24Interface::m_RF24InterfaceInitialized;
 
     if(RF24Interface::m_RF24InterfaceInitialized)
         return;
