@@ -4,6 +4,7 @@
 #include <signal.h>
 
 #include "rf24interface.h"
+#include "wiringpiinterface.h"
 
 void closeApplication(int sig)
 {
@@ -36,6 +37,11 @@ int main(int argc, char *argv[])
         RF24Interface::instance().init();
         RF24Interface::instance().init();
         RF24Interface::instance().init();
+
+        wiringPiInterface::instance().setupInterrupt("GPIO_25",
+                                                     "INT_EDGE_FALLING",
+                                                     &wiringPiInterface::interruptHandler,
+                                                     NULL);
 
         return app.exec();
 }
