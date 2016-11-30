@@ -32,13 +32,11 @@ isEmpty(SYSROOT) {
 
 SOURCES += main.cpp \
     rf24interface.cpp \
-    rf24functions.cpp \
-    wiringpiinterface.cpp
+    rf24functions.cpp
 
 HEADERS += \
     rf24interface.h \
-    rf24functions.h \
-    wiringpiinterface.h
+    rf24functions.h
 
 unix {
     target.path = /usr/share/piRF24
