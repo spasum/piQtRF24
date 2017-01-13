@@ -18,7 +18,7 @@ protected:
     virtual ~RF24Functions();
     Q_DISABLE_COPY(RF24Functions)
 
-    static void interruptHandler();
+    static void interruptHandler(void *);
 
     friend class RF24Interface;
 
