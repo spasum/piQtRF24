@@ -7,9 +7,12 @@
 #include <cstdlib>
 #include <unistd.h>
 
+#ifdef __RPI__
+
+#include <wiringPi.h>
+
 #define RF24InterruptGPIO 17 //@TODO read this from settings file and take care it's BCM
 
-#ifdef __RPI__
 RF24 RF24Functions::m_radio(22, 0);
 RF24Network RF24Functions::m_network(RF24Functions::m_radio);
 RF24Mesh RF24Functions::m_mesh(RF24Functions::m_radio, RF24Functions::m_network);
